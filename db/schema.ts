@@ -83,3 +83,16 @@ export const stories = pgTable("story", {
     createdAt: timestamp("createdAt", { mode: "date" }).defaultNow(),
     updatedAt: timestamp("updatedAt", { mode: "date" }).defaultNow(),
 })
+
+export const comments = pgTable("comment", {
+    id: uuid("id").primaryKey().defaultRandom(),
+    storyId: uuid("storyId")
+        .notNull()
+        .references(() => stories.id, { onDelete: "cascade" }),
+    authorId: text("authorId")
+        .notNull()
+        .references(() => users.id, { onDelete: "cascade" }),
+    content: text("content").notNull(),
+    createdAt: timestamp("createdAt", { mode: "date" }).defaultNow(),
+    updatedAt: timestamp("updatedAt", { mode: "date" }).defaultNow(),
+})
