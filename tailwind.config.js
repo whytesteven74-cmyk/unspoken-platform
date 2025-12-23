@@ -6,6 +6,8 @@ module.exports = {
     theme: {
         extend: {
             colors: {
+                primary: 'var(--color-primary)',
+                secondary: 'var(--color-secondary)',
                 // Shared Wellness Palette
                 'sage': {
                     50: '#f2f8f5',
